@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #00c9ff, #92fe9d);
+            background-size: 400% 300%;
+            animation: gradientShift 15s ease infinite;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .form-container {
+            background: #1f1f1f;
+            padding: 40px 30px;
+            border-radius: 12px;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+            width: 100%;
+            max-width: 450px;
+            animation: slideIn 1s ease-out forwards;
+            opacity: 0;
+            transform: translateY(50px);
+            color: #fff;
+            margin: 20px auto;
+            max-height: 90vh;
+            overflow-y: auto;
+            scrollbar-width: none;
+        }
+
+        .form-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #ffffff;
+            font-size: 28px;
+            position: sticky;
+            top: 0;
+            background: #1f1f1f;
+            padding: 10px 0;
+            z-index: 10;
+        }
+
+        form {
+            transition: opacity 0.5s ease;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group input,
+        .input-group select,
+        .input-group textarea {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #444;
+            border-radius: 8px;
+            background: #2c2c2c;
+            color: #fff;
+            outline: none;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            font-size: 15px;
+            font-family: inherit;
+        }
+
+        .input-group input::placeholder,
+        .input-group textarea::placeholder {
+            color: #888;
+        }
+
+        .input-group select {
+            color: #888;
+        }
+
+        .input-group select option {
+            background: #2c2c2c;
+            color: #fff;
+        }
+
+        .input-group select option[value=""] {
+            color: #888;
+        }
+
+        .input-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .input-group input:focus,
+        .input-group select:focus,
+        .input-group textarea:focus {
+            border-color: #74c0fc;
+            box-shadow: 0 0 8px rgba(116, 192, 252, 0.4);
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            background: #20c997;
+            color: white;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .btn-submit:hover {
+            background: #17a589;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(32, 201, 151, 0.4);
+        }
+
+        .btn-submit:active {
+            transform: translateY(0);
+        }
+
+        .submitted-data {
+            display: none;
+        }
+
+        .submitted-data.active {
+            display: block;
+        }
+
+        .success-header {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #00e676;
+            font-size: 24px;
+        }
+
+        .info-card {
+            background: #2c2c2c;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .info-item {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #444;
+        }
+
+        .info-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .info-label {
+            font-weight: 700;
+            color: #74c0fc;
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        .info-value {
+            color: #e0e0e0;
+            font-size: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <!-- Registration Form -->
+        <div id="registrationForm">
+            <h2>Registration Form</h2>
+            <form id="regForm">
+                <div class="input-group">
+                    <input type="text" id="fullName" placeholder="Full Name" required>
+                </div>
+
+                <div class="input-group">
+                    <input type="text" id="lastName" placeholder="Last Name" required>
+                </div>
+
+                <div class="input-group">
+                    <input type="email" id="email" placeholder="Email Address" required>
+                </div>
+
+                <div class="input-group">
+                    <input type="text" id="college" placeholder="College" required>
+                </div>
+
+                <div class="input-group">
+                    <input type="text" id="year" placeholder="Year" required>
+                </div>
+
+                <div class="input-group">
+                    <input type="tel" id="phone" placeholder="Phone Number" required>
+                </div>
+
+                <div class="input-group">
+                    <input type="date" id="dob" placeholder="Date of Birth" required>
+                </div>
+
+                <div class="input-group">
+                    <select id="gender" required>
+                        <option value="">Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <textarea id="address" placeholder="Address" required></textarea>
+                </div>
+
+                <div class="input-group">
+                    <input type="text" id="city" placeholder="City" required>
+                </div>
+
+                <div class="input-group">
+                    <input type="text" id="state" placeholder="State" required>
+                </div>
+
+                <div class="input-group">
+                    <input type="text" id="postalCode" placeholder="Pin Code" required>
+                </div>
+
+                <div class="input-group">
+                    <input type="text" id="country" placeholder="Country" required>
+                </div>
+
+                <div class="input-group">
+                    <input type="text" id="emergencyContact" placeholder="Emergency Contact Name" required>
+                </div>
+
+                <div class="input-group">
+                    <input type="text" id="cgpa" placeholder="CGPA" required>
+                </div>
+
+                <button type="submit" class="btn-submit">Submit Registration</button>
+            </form>
+        </div>
+
+        
+        <div id="submittedData" class="submitted-data">
+            <h2 class="success-header">✓ Registration Successful!</h2>
+            <div class="info-card">
+                <div class="info-item">
+                    <span class="info-label">Full Name</span>
+                    <span class="info-value" id="displayFullName"></span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Last Name</span>
+                    <span class="info-value" id="displayLastName"></span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Email Address</span>
+                    <span class="info-value" id="displayEmail"></span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">College</span>
+                    <span class="info-value" id="displayCollege"></span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Year</span>
+                    <span class="info-value" id="displayYear"></span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Phone Number</span>
+                    <span class="info-value" id="displayPhone"></span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Date of Birth</span>
+                    <span class="info-value" id="displayDob"></span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Gender</span>
+                    <span class="info-value" id="displayGender"></span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Address</span>
+                    <span class="info-value" id="displayAddress"></span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">City</span>
+                    <span class="info-value" id="displayCity"></span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">State</span>
+                    <span class="info-value" id="displayState"></span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Pin Code</span>
+                    <span class="info-value" id="displayPostalCode"></span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Country</span>
+                    <span class="info-value" id="displayCountry"></span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Emergency Contact</span>
+                    <span class="info-value" id="displayEmergencyContact"></span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">CGPA</span>
+                    <span class="info-value" id="displayCGPA"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('regForm');
+            const registrationForm = document.getElementById('registrationForm');
+            const submittedData = document.getElementById('submittedData');
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+             
+                const formData = {
+                    fullName: document.getElementById('fullName').value,
+                    lastName: document.getElementById('lastName').value,
+                    email: document.getElementById('email').value,
+                    college: document.getElementById('college').value,
+                    year: document.getElementById('year').value,
+                    phone: document.getElementById('phone').value,
+                    dob: document.getElementById('dob').value,
+                    gender: document.getElementById('gender').value,
+                    address: document.getElementById('address').value,
+                    city: document.getElementById('city').value,
+                    state: document.getElementById('state').value,
+                    postalCode: document.getElementById('postalCode').value,
+                    country: document.getElementById('country').value,
+                    emergencyContact: document.getElementById('emergencyContact').value,
+                    cgpa: document.getElementById('cgpa').value
+                };
+
+                // Display the submitted data
+                document.getElementById('displayFullName').textContent = formData.fullName;
+                document.getElementById('displayLastName').textContent = formData.lastName;
+                document.getElementById('displayEmail').textContent = formData.email;
+                document.getElementById('displayCollege').textContent = formData.college;
+                document.getElementById('displayYear').textContent = formData.year;
+                document.getElementById('displayPhone').textContent = formData.phone;
+                document.getElementById('displayDob').textContent = formData.dob;
+                document.getElementById('displayGender').textContent = formData.gender;
+                document.getElementById('displayAddress').textContent = formData.address;
+                document.getElementById('displayCity').textContent = formData.city;
+                document.getElementById('displayState').textContent = formData.state;
+                document.getElementById('displayPostalCode').textContent = formData.postalCode;
+                document.getElementById('displayCountry').textContent = formData.country;
+                document.getElementById('displayEmergencyContact').textContent = formData.emergencyContact;
+                document.getElementById('displayCGPA').textContent = formData.cgpa;
+
+               
+                registrationForm.style.display = 'none';
+                submittedData.classList.add('active');
+                
+               
+                document.querySelector('.form-container').scrollTop = 0;
+            });
+        });
+    </script>
+</body>
+</html>
